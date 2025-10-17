@@ -1,14 +1,22 @@
+import { motion } from "framer-motion";
 import heroImg from "../assets/hero.jpg";
 
 export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative h-[90vh] flex items-center justify-center bg-cover bg-center text-center text-white"
-      style={{ backgroundImage: `url(${heroImg})`, paddingTop: "4rem" }} // Desplaza el hero debajo del header
+      className="relative h-screen flex items-center justify-center bg-cover bg-center text-center text-white"
+      style={{ backgroundImage: `url(${heroImg})` }}
     >
       <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 max-w-2xl px-6">
+      
+      {/* Contenido animado */}
+      <motion.div
+        className="relative z-10 max-w-2xl px-6 pt-20"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
         <h1 className="text-5xl font-bold mb-4">
           Conservemos la magia de las luciérnagas
         </h1>
@@ -22,7 +30,7 @@ export default function Hero() {
         >
           Descubrí cómo ayudar
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 }
